@@ -6,46 +6,49 @@
   <title>E Sevana Korome</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      text-align: center;
-    }
-    
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    
-    .button {
-      display: block;
-      text-align: center;
-      width: 80%;
-      max-width: 300px;
-      margin: 10px;
-      padding: 15px;
-      background-color: #0074cc;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 18px;
-      transition: background-color 0.3s, transform 0.2s;
-      background-size: cover;
-      background-position: center;
-      background-image: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transform: translateY(0);
-    }
-    
-    .button:hover {
-      background-color: #0055a4;
-      transform: translateY(-5px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      .button {
+        display: block;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+        margin: 10px;
+        padding: 15px;
+        background-color: #fff; /* Background color for the button */
+        color: #0074cc; /* Text color for the button */
+        text-decoration: none;
+        border: 2px solid #0074cc; /* Add a border to the button */
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        background-size: cover;
+        background-position: center;
+        background-image: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: translateY(0);
+      }
+      
+      .button:hover {
+        background-color: #0074cc;
+        color: #fff;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
     .button:nth-child(1) {
       background-image: url('https://miro.medium.com/v2/resize:fit:720/format:webp/1*94MvdhxeCQHoD7A4K1vlWg.png');
     }
