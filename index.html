@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <title>E Sevana Korome</title>
   <style>
-    body{
+    body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
+      text-align: center;
     }
-    
+
     /* Style the container for your buttons */
-    container {
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
     }
-    
+
     /* Style the individual buttons */
-    button {
+    .button {
       display: block;
       text-align: center;
       width: 80%;
@@ -36,83 +36,59 @@
       border-radius: 5px;
       font-size: 18px;
       transition: background-color 0.3s;
-      background-size: cover; /* Make background images cover the button */
-      background-position: center; /* Center the background image */
+      background-size: cover;
+      background-position: center;
+      background-image: none;
     }
-    
-    button:hover {
+
+    .button:hover {
       background-color: #0055a4;
     }
-    
-    /* You can define different styles for each button if needed */
-    button:nth-child(1) {
+
+    .button:nth-child(1) {
       background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40creativemj%2Fthe-most-useful-way-to-add-upi-payments-to-your-app-or-website-abbc7c3e0473&psig=AOvVaw0WADqlssEAB2EGiYDRxWHF&ust=1697112332434000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPiOo6D67YEDFQAAAAAdAAAAABAE');
     }
-    
-    button:nth-child(1):hover {
+
+    .button:nth-child(1):hover {
       background-color: #d63717;
     }
-    
-    button:nth-child(2) {
+
+    .button:nth-child(2) {
       background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.callbell.eu%2Fen%2Fintegrate-whatsapp-website%2F&psig=AOvVaw02PuZTcKcHhuSR5M53oE0e&ust=1697112284688000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPid4Ir67YEDFQAAAAAdAAAAABAE');
     }
-    
-    button:nth-child(2):hover {
+
+    .button:nth-child(2):hover {
       background-color: #0c4aa9;
     }
-    
-    button:nth-child(3) {
+
+    .button:nth-child(3) {
       background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dezeen.com%2F2020%2F10%2F07%2Fgmail-logo-google-rebrand-workspace-design%2F&psig=AOvVaw22eVroQcqGwkQQghAI8niV&ust=1697112370135000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJj-_LH67YEDFQAAAAAdAAAAABAE');
     }
-    
-    button:nth-child(3):hover {
+
+    .button:nth-child(3):hover {
       background-color: #4d9e42;
     }
-    h1 {
-          text-align: center;
-          font-size: 24px;
-          color:#941818;
-        }
-    h2 {
-          text-align: center;
-          font-size: 18px;
-        }
-    h3 {
-          text-align: center;
-          font-size: 16px;
-        }
-    div {
-          width: 300px;
-          margin: 0 auto;
-          padding-top: 20px;
-        }
-    
-    /* Add media queries for responsiveness */
+
     @media (max-width: 768px) {
-      container {
+      .container {
         flex-direction: column;
       }
-    
-      button {
-        width: 100%; /* Make buttons occupy the full width on mobile */
+
+      .button {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <center>
-    <h1>E Sevana Kendram Korome</h1>
-    <h2>Digita Seva CSC Centre</h2>
-    <h3>CSC ID: 276331260016</h3>
+  <h1>E Sevana Kendram Korome</h1>
+  <h2>Digita Seva CSC Centre</h2>
+  <h3>CSC ID: 276331260016</h3>
   
-  
-
-  <div style="text-align: center;">
-    <button onclick="window.location.href='upi://pay?pa=9446956617@okbizaxis&pn=E Sevana Kendram Korome&mc=5943&aid=uGICAgIDv2bW4XQ&tr=BCR2DN6T27ZZPFTG'">Pay Us</button>
-    <button onclick="window.location.href='https://wa.me/919446956617'">WhatsApp</button>
-    <button onclick="window.location.href='mailto:janasevana.korome@gmail.com'">Gmail</button>
+  <div class="container">
+    <a href="upi://pay?pa=9446956617@okbizaxis&pn=E Sevana Kendram Korome&mc=5943&aid=uGICAgIDv2bW4XQ&tr=BCR2DN6T27ZZPFTG" class="button">Pay Us</a>
+    <a href="https://wa.me/919446956617" class="button">WhatsApp</a>
+    <a href="mailto:janasevana.korome@gmail.com" class="button">Gmail</a>
   </div>
-  <div class="background-image"></div>
-  </center>
 </body>
 </html>
