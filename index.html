@@ -9,7 +9,7 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
+        background: linear-gradient(to bottom, #00bcd4, #0074cc);
         text-align: center;
       }
       
@@ -34,6 +34,7 @@
         border: 2px solid #0074cc; /* Add a border to the button */
         border-radius: 5px;
         font-size: 24px;
+        font-weight: bold; /* Make the text bold */
         transition: background-color 0.3s, transform 0.2s, color 0.3s;
         background-size: cover;
         background-position: center;
@@ -41,6 +42,8 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         transform: translateY(0);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        -webkit-text-stroke: 1px #fff; /* Add a white stroke to the text */
+        color: #fff; /* Set the text color to white */
       }
       
       .button:hover {
