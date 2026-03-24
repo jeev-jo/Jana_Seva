@@ -507,6 +507,83 @@
     }
     .contact-card:hover .action-hint { gap: 12px; }
 
+    /* ===== LOCATION SECTION ===== */
+    .location-section {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .location-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .location-map {
+      min-height: 350px;
+    }
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .location-info {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+    .location-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .location-detail i {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+    .location-detail h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .location-detail p {
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .location-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .location-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26, 35, 126, 0.3);
+    }
+
     /* ===== FOOTER ===== */
     .footer {
       background: linear-gradient(135deg, #0a1332, #1a237e);
@@ -735,6 +812,9 @@
       .service-card p { font-size: 11px; }
       .contact-grid { grid-template-columns: 1fr; }
       .contact-card { padding: 24px 20px; }
+      .location-wrapper { grid-template-columns: 1fr; }
+      .location-map { min-height: 250px; }
+      .location-info { padding: 28px 20px; }
       .why-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
       .why-card { padding: 22px 16px; border-radius: 16px; }
       .why-card .icon { font-size: 28px; margin-bottom: 10px; }
@@ -831,7 +911,7 @@
             <p>Happy Customers</p>
           </div>
           <div class="stat-card">
-            <div class="stat-icon blue"><i class="fas fa-file-certificate"></i></div>
+            <div class="stat-icon blue"><i class="fas fa-file"></i></div>
             <h3>50+</h3>
             <p>Services Offered</p>
           </div>
@@ -889,7 +969,7 @@
       <div class="service-card fade-up">
         <div class="service-icon bg-blue"><i class="fas fa-fingerprint"></i></div>
         <h3>Aadhaar Services</h3>
-        <p>New enrollment, update, correction, mobile linking &amp; download</p>
+        <p>Update, correction, mobile linking &amp; download</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon bg-orange"><i class="fas fa-id-card"></i></div>
@@ -914,7 +994,7 @@
       <div class="service-card fade-up">
         <div class="service-icon bg-teal"><i class="fas fa-piggy-bank"></i></div>
         <h3>Banking &amp; Insurance</h3>
-        <p>Account opening, PM schemes, insurance enrollment &amp; more</p>
+        <p>PM schemes, insurance enrollment, vehicle insurance &amp; more</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon bg-indigo"><i class="fas fa-train"></i></div>
@@ -989,6 +1069,46 @@
     </div>
   </section>
 
+  <!-- LOCATION -->
+  <section class="location-section" id="location">
+    <div class="section-header fade-up">
+      <div class="tag">Find Us</div>
+      <h2>Our Location</h2>
+      <p>Visit us at our centre — we're easy to find!</p>
+    </div>
+    <div class="location-wrapper fade-up">
+      <div class="location-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d244.14346706579275!2d75.8807188!3d11.7442224!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba5d72862d3e4cb%3A0x5731d533ff709e9a!2sJana%20Sevana%20Kendram!5e0!3m2!1sen!2sin!4v1774345734468!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="location-info">
+        <div class="location-detail">
+          <i class="fas fa-location-dot"></i>
+          <div>
+            <h3>Address</h3>
+            <p>Kadayangal Building, Korome, 670731</p>
+          </div>
+        </div>
+        <div class="location-detail">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h3>Working Hours</h3>
+            <p>Mon – Sat: 9:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+        <div class="location-detail">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h3>Phone</h3>
+            <p>+91 94469 56617</p>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/79cn7Eg84BuUb7q7A" target="_blank" rel="noopener noreferrer" class="location-btn">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-brand">
@@ -996,11 +1116,13 @@
       <span>E Sevana Kendram Korome</span>
     </div>
     <p>Digital Seva CSC Centre &bull; CSC ID: 276331260016</p>
+    <p>Kadayangal Building, Korome, 670731</p>
     <p>Your trusted partner for all government e-services</p>
     <div class="footer-social">
       <a href="https://wa.me/919446956617" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       <a href="mailto:janasevana.korome@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
       <a href="tel:+919446956617" aria-label="Phone"><i class="fas fa-phone"></i></a>
+      <a href="https://maps.app.goo.gl/79cn7Eg84BuUb7q7A" target="_blank" rel="noopener noreferrer" aria-label="Location"><i class="fas fa-location-dot"></i></a>
     </div>
     <hr class="footer-divider">
     <p class="copy">&copy; 2026 E Sevana Kendram Korome. All rights reserved.</p>
