@@ -1,126 +1,1081 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E Sevana Korome</title>
+  <title>E Sevana Kendram Korome | Digital Seva CSC Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-image: url('https://i.imgur.com/t5y8roi.jpg'); /* Replace with your direct image URL */
-        background-size: cover;   /*This scales the image to cover the entire element */
-        background-repeat: no-repeat;
-         /*background-position: center;*/
+    :root {
+      --primary: #1a237e;
+      --primary-light: #3949ab;
+      --accent: #ff6f00;
+      --accent-light: #ffa040;
+      --green: #2e7d32;
+      --white: #ffffff;
+      --light-bg: #f5f7ff;
+      --dark-text: #1a1a2e;
+      --gray: #6b7280;
+      --card-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark-text);
+      background: var(--light-bg);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26, 35, 126, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .navbar .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-brand .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: white;
+      font-weight: 800;
+    }
+    .nav-brand span {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent-light); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: 600 !important;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 40%, #283593 70%, #3949ab 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 24px 60px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,111,0,0.15) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+      animation: float-orb 8s ease-in-out infinite;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(57,73,171,0.3) 0%, transparent 70%);
+      bottom: -50px;
+      left: -50px;
+      border-radius: 50%;
+      animation: float-orb 10s ease-in-out infinite reverse;
+    }
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -30px); }
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-text { color: white; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 25px;
+      font-size: 13px;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      animation: badge-glow 3s ease-in-out infinite;
+    }
+    @keyframes badge-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(255,160,64,0.2); }
+      50% { box-shadow: 0 0 20px rgba(255,160,64,0.4); }
+    }
+    .hero-text h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-text h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-text .subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .hero-text .csc-id {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .hero-text .csc-id span {
+      color: var(--accent-light);
+      font-weight: 500;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      box-shadow: 0 8px 30px rgba(255,111,0,0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(255,111,0,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-3px);
+    }
+
+    /* Hero Right — Stats Cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .stat-row { display: flex; gap: 20px; }
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 28px 24px;
+      flex: 1;
+      text-align: center;
+      color: white;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.14);
+    }
+    .stat-card .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 22px;
+    }
+    .stat-card .stat-icon.orange { background: linear-gradient(135deg, #ff6f00, #ffa040); }
+    .stat-card .stat-icon.blue { background: linear-gradient(135deg, #1565c0, #42a5f5); }
+    .stat-card .stat-icon.green { background: linear-gradient(135deg, #2e7d32, #66bb6a); }
+    .stat-card .stat-icon.purple { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+    .stat-card h3 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+    .stat-card p { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    /* ===== MARQUEE ===== */
+    .marquee-section {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0 40px;
+    }
+    .marquee-item i { font-size: 16px; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header .tag {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(26,35,126,0.1), rgba(57,73,171,0.1));
+      color: var(--primary);
+      padding: 6px 20px;
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--dark-text);
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      color: var(--gray);
+      font-size: 16px;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 26px;
+      color: white;
+    }
+    .service-icon.bg-blue { background: linear-gradient(135deg, #1565c0, #42a5f5); }
+    .service-icon.bg-orange { background: linear-gradient(135deg, #e65100, #ff9800); }
+    .service-icon.bg-green { background: linear-gradient(135deg, #2e7d32, #66bb6a); }
+    .service-icon.bg-purple { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+    .service-icon.bg-red { background: linear-gradient(135deg, #c62828, #ef5350); }
+    .service-icon.bg-teal { background: linear-gradient(135deg, #00695c, #26a69a); }
+    .service-icon.bg-indigo { background: linear-gradient(135deg, #283593, #5c6bc0); }
+    .service-icon.bg-amber { background: linear-gradient(135deg, #ff8f00, #ffca28); }
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark-text);
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .why-us {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #0d1b4a, #1a237e);
+      color: white;
+    }
+    .why-us .section-header .tag {
+      background: rgba(255,255,255,0.12);
+      color: var(--accent-light);
+    }
+    .why-us .section-header h2 { color: white; }
+    .why-us .section-header p { color: rgba(255,255,255,0.6); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-5px);
+    }
+    .why-card .icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .why-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+      text-decoration: none;
+      color: var(--dark-text);
+      display: block;
+    }
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .contact-card .card-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 28px;
+      color: white;
+    }
+    .contact-card .card-icon.pay { background: linear-gradient(135deg, #e65100, #ff9800); }
+    .contact-card .card-icon.whatsapp { background: linear-gradient(135deg, #1b5e20, #4caf50); }
+    .contact-card .card-icon.email { background: linear-gradient(135deg, #c62828, #ef5350); }
+    .contact-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .contact-card p {
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .contact-card .action-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+      transition: gap 0.3s;
+    }
+    .contact-card:hover .action-hint { gap: 12px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: linear-gradient(135deg, #0a1332, #1a237e);
+      color: white;
+      text-align: center;
+      padding: 40px 24px 24px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .footer-brand .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+      font-weight: 800;
+    }
+    .footer-brand span { font-size: 18px; font-weight: 700; }
+    .footer p {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 16px;
+    }
+    .footer-social a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: 24px 0 16px;
+    }
+    .footer .copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      z-index: 999;
+      transition: all 0.3s;
+      text-decoration: none;
+      animation: pulse-wa 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+    }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 6px 36px rgba(37,211,102,0.7); }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE BOTTOM NAV ===== */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 35, 126, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.2);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-bottom-nav .bottom-nav-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .mobile-bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    .mobile-bottom-nav a i { font-size: 18px; }
+    .mobile-bottom-nav a.active,
+    .mobile-bottom-nav a:hover {
+      color: var(--accent-light);
+      background: rgba(255,255,255,0.08);
+    }
+    .mobile-bottom-nav a.pay-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      padding: 10px 18px;
+      border-radius: 16px;
+      margin-top: -18px;
+      box-shadow: 0 4px 20px rgba(255,111,0,0.45);
+    }
+
+    /* ===== MOBILE QUICK ACTIONS (shown on mobile hero) ===== */
+    .mobile-stats {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .mobile-stat {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 18px 14px;
+      text-align: center;
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-stat i {
+      font-size: 22px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .mobile-stat i.text-orange { color: var(--accent-light); }
+    .mobile-stat i.text-blue { color: #42a5f5; }
+    .mobile-stat i.text-green { color: #66bb6a; }
+    .mobile-stat i.text-purple { color: #ab47bc; }
+    .mobile-stat .val { font-size: 22px; font-weight: 700; }
+    .mobile-stat .label { font-size: 11px; color: rgba(255,255,255,0.55); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
         text-align: center;
       }
-      
-      .container {
+      .hero-actions { justify-content: center; }
+      .hero-right { display: none; }
+      .mobile-stats { display: grid; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        background: rgba(26, 35, 126, 0.98);
+        backdrop-filter: blur(16px);
+        padding: 20px 24px;
+        gap: 16px;
       }
-      
-      .button {
-        display: block;
-        text-align: center;
-        width: 80%;
-        max-width: 300px;
-        margin: 10px;
-        padding: 15px;
-        background-color: rgba(255, 255, 255, 0.1); /* Background color for the button */
-        color: #fff; /* Text color for the button */
-        text-decoration: none;
-        border: 2px solid #808080; /* Add a border to the button */
-        border-radius: 5px;
-        font-size: 24px;
-        font-weight: bold; /* Make the text bold */
-        transition: background-color 0.3s, transform 0.2s, color 0.3s;
-        background-size: cover;
-        background-position: left center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow to the button box */
-        background-image: none;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transform: translateY(0);
-        font-weight: bold; /* Make the text bold */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow to the text */
-        -webkit-text-stroke: 1px #333; /* Add a stroke effect to the text */
-      }
-      
-      .button:hover {
-        background-color: #0074cc;
-        color: #fff;
-        transform: translateY(-5px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      }
-    .button:nth-child(1) {
-      background-image: url('https://miro.medium.com/v2/resize:fit:720/format:webp/1*94MvdhxeCQHoD7A4K1vlWg.png');
+      .mobile-bottom-nav { display: block; }
+      .whatsapp-float { bottom: 90px; }
+      .footer { padding-bottom: 80px; }
+      .hero { padding: 90px 20px 40px; min-height: auto; }
+      .hero-text h1 { font-size: 32px; }
+      .hero-text .subtitle { font-size: 15px; }
+      .btn { padding: 12px 24px; font-size: 14px; }
+      .services { padding: 50px 16px; }
+      .section-header { margin-bottom: 36px; }
+      .section-header h2 { font-size: 26px; }
+      .section-header p { font-size: 14px; }
+      .why-us { padding: 50px 16px; }
+      .contact { padding: 50px 16px; }
+    }
+    @media (max-width: 600px) {
+      .stat-row { flex-direction: column; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .service-card { padding: 22px 16px; border-radius: 16px; }
+      .service-icon { width: 52px; height: 52px; font-size: 22px; border-radius: 14px; margin-bottom: 12px; }
+      .service-card h3 { font-size: 14px; }
+      .service-card p { font-size: 11px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 24px 20px; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .why-card { padding: 22px 16px; border-radius: 16px; }
+      .why-card .icon { font-size: 28px; margin-bottom: 10px; }
+      .why-card h3 { font-size: 15px; }
+      .why-card p { font-size: 12px; }
+      .hero-badge { font-size: 11px; padding: 5px 12px; }
+      .hero-text .csc-id { font-size: 12px; margin-bottom: 20px; }
+      .hero-actions { gap: 10px; }
+      .nav-brand span { font-size: 15px; }
+      .nav-brand .logo-icon { width: 36px; height: 36px; font-size: 16px; }
+      .marquee-item { font-size: 12px; padding: 0 24px; }
+    }
+    @media (max-width: 380px) {
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .service-card { padding: 18px 12px; }
+      .hero-text h1 { font-size: 26px; }
+      .btn { padding: 10px 20px; font-size: 13px; }
     }
 
-    .button:nth-child(1):hover {
-      background-color: #d63717;
-    }
-
-    .button:nth-child(2) {
-      background-image: url('https://www.callbell.eu/wp-content/uploads/2019/01/Senza-nome-2.png');
-    }
-
-    .button:nth-child(2):hover {
-      background-color: #0c4aa9;
-    }
-
-    .button:nth-child(3) {
-      background-image: url('https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/e5/43/d0/e543d042-9763-59d8-667d-cc0c1bf68653/logo_gmail_2020q4_color-0-1x_U007emarketing-0-0-0-6-0-0-0-0-85-220-0.png/1200x630wa.png');
-    }
-
-    .button:nth-child(3):hover {
-      background-color: #4d9e42;
-    }
-    h1 {
-      font-size: 36px;
-      color: #FF5722; /* Change the color to a creative one */
-      text-transform: uppercase; /* Uppercase the text */
-      letter-spacing: 3px; /* Add letter spacing for a unique look */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a text shadow */
-    }
-    
-    h2 {
-      font-size: 24px;
-      color: #2196F3; /* Change the color */
-      font-weight: bold; /* Make the text bold */
-      margin-top: 10px; /* Add space from the previous element */
-    }
-    
-    h3 {
-      font-size: 18px;
-      color: #4CAF50; /* Change the color */
-      font-style: italic; /* Make the text italic */
-      text-decoration: underline; /* Add underline */
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-    .button {
-        width: 100%;
-      }
+    /* ===== TOUCH FRIENDLY ===== */
+    @media (hover: none) and (pointer: coarse) {
+      .service-card:active { transform: scale(0.97); background: #f0f2ff; }
+      .contact-card:active { transform: scale(0.97); }
+      .why-card:active { background: rgba(255,255,255,0.15); }
+      .btn:active { transform: scale(0.96); }
     }
   </style>
 </head>
 <body>
-  <h1>E Sevana Kendram Korome</h1>
-  <h2>Digita Seva CSC Centre</h2>
-  <h3>CSC ID: 276331260016</h3>
-  
-  <div class="container">
-    <a href="upi://pay?pa=9446956617@okbizaxis&pn=E Sevana Kendram Korome&mc=5943&aid=uGICAgIDv2bW4XQ&tr=BCR2DN6T27ZZPFTG" class="button">Pay Us</a>
-    <a href="https://wa.me/919446956617" class="button">WhatsApp</a>
-    <a href="mailto:janasevana.korome@gmail.com" class="button">Gmail</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="logo-icon"><i class="fas fa-landmark"></i></div>
+        <span>Jana Seva</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wa.me/919446956617" class="nav-cta"><i class="fab fa-whatsapp"></i> Chat Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fas fa-shield-halved"></i>
+          Government Authorized CSC Centre
+        </div>
+        <h1>E Sevana Kendram<br><span class="highlight">Korome</span></h1>
+        <p class="subtitle">Digital Seva CSC Centre &mdash; Your one-stop destination for all government e-services and online solutions.</p>
+        <p class="csc-id"><i class="fas fa-id-badge"></i>&ensp;CSC ID: <span>276331260016</span></p>
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-primary"><i class="fas fa-th-large"></i> Our Services</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-phone"></i> Contact Us</a>
+        </div>
+        <!-- Mobile stats (visible only on mobile) -->
+        <div class="mobile-stats">
+          <div class="mobile-stat">
+            <i class="fas fa-users text-orange"></i>
+            <div class="val">5000+</div>
+            <div class="label">Customers</div>
+          </div>
+          <div class="mobile-stat">
+            <i class="fas fa-certificate text-blue"></i>
+            <div class="val">50+</div>
+            <div class="label">Services</div>
+          </div>
+          <div class="mobile-stat">
+            <i class="fas fa-bolt text-green"></i>
+            <div class="val">Fast</div>
+            <div class="label">Processing</div>
+          </div>
+          <div class="mobile-stat">
+            <i class="fas fa-star text-purple"></i>
+            <div class="val">4.9</div>
+            <div class="label">Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fas fa-users"></i></div>
+            <h3>5000+</h3>
+            <p>Happy Customers</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fas fa-file-certificate"></i></div>
+            <h3>50+</h3>
+            <p>Services Offered</p>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-clock"></i></div>
+            <h3>Fast</h3>
+            <p>Quick Processing</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fas fa-star"></i></div>
+            <h3>4.9</h3>
+            <p>Customer Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Aadhaar Services</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> PAN Card</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Passport Seva</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Income Certificate</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Ration Card</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Bill Payments</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Insurance</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Banking Services</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Train Booking</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Pension Schemes</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Aadhaar Services</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> PAN Card</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Passport Seva</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Income Certificate</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Ration Card</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Bill Payments</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Insurance</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Banking Services</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Train Booking</span>
+      <span class="marquee-item"><i class="fas fa-check-circle"></i> Pension Schemes</span>
+    </div>
   </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header fade-up">
+      <div class="tag">What We Offer</div>
+      <h2>Our Services</h2>
+      <p>We provide a wide range of government and digital services right at your doorstep.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon bg-blue"><i class="fas fa-fingerprint"></i></div>
+        <h3>Aadhaar Services</h3>
+        <p>New enrollment, update, correction, mobile linking &amp; download</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-orange"><i class="fas fa-id-card"></i></div>
+        <h3>PAN Card</h3>
+        <p>New PAN application, correction, reprint &amp; link with Aadhaar</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-green"><i class="fas fa-passport"></i></div>
+        <h3>Passport Seva</h3>
+        <p>Fresh passport, renewal, tatkal processing &amp; appointment booking</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-purple"><i class="fas fa-file-alt"></i></div>
+        <h3>Certificates</h3>
+        <p>Income, caste, nativity, community &amp; residence certificates</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-red"><i class="fas fa-bolt"></i></div>
+        <h3>Bill Payments</h3>
+        <p>Electricity, water, gas, mobile recharge &amp; DTH payments</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-teal"><i class="fas fa-piggy-bank"></i></div>
+        <h3>Banking &amp; Insurance</h3>
+        <p>Account opening, PM schemes, insurance enrollment &amp; more</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-indigo"><i class="fas fa-train"></i></div>
+        <h3>Ticket Booking</h3>
+        <p>Train, bus &amp; flight ticket booking at competitive prices</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon bg-amber"><i class="fas fa-print"></i></div>
+        <h3>Print &amp; Scan</h3>
+        <p>Printing, photocopying, scanning, lamination &amp; spiral binding</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-us" id="why-us">
+    <div class="section-header fade-up">
+      <div class="tag">Why Choose Us</div>
+      <h2>Your Trusted Service Partner</h2>
+      <p>We make government services accessible, affordable and hassle-free for everyone.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="icon">&#127919;</div>
+        <h3>Government Authorized</h3>
+        <p>Officially registered CSC centre with valid Digital Seva credentials.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="icon">&#9889;</div>
+        <h3>Quick Processing</h3>
+        <p>Fast and efficient service delivery with minimal waiting time.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="icon">&#128176;</div>
+        <h3>Affordable Rates</h3>
+        <p>Transparent pricing with no hidden charges on any service.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="icon">&#129309;</div>
+        <h3>Friendly Support</h3>
+        <p>Helpful and knowledgeable staff ready to assist you every step.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-header fade-up">
+      <div class="tag">Get In Touch</div>
+      <h2>Contact Us</h2>
+      <p>Reach out to us through any of these channels. We're here to help!</p>
+    </div>
+    <div class="contact-grid">
+      <a href="upi://pay?pa=9446956617@okbizaxis&pn=E%20Sevana%20Kendram%20Korome&mc=5943&aid=uGICAgIDv2bW4XQ&tr=BCR2DN6T27ZZPFTG" class="contact-card fade-up">
+        <div class="card-icon pay"><i class="fas fa-indian-rupee-sign"></i></div>
+        <h3>Pay Online</h3>
+        <p>Quick &amp; secure UPI payment</p>
+        <span class="action-hint">Tap to Pay <i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="https://wa.me/919446956617" class="contact-card fade-up">
+        <div class="card-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+        <h3>WhatsApp</h3>
+        <p>Chat with us on +91 94469 56617</p>
+        <span class="action-hint">Send Message <i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="mailto:janasevana.korome@gmail.com" class="contact-card fade-up">
+        <div class="card-icon email"><i class="fas fa-envelope"></i></div>
+        <h3>Email</h3>
+        <p>janasevana.korome@gmail.com</p>
+        <span class="action-hint">Send Email <i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="logo-icon"><i class="fas fa-landmark"></i></div>
+      <span>E Sevana Kendram Korome</span>
+    </div>
+    <p>Digital Seva CSC Centre &bull; CSC ID: 276331260016</p>
+    <p>Your trusted partner for all government e-services</p>
+    <div class="footer-social">
+      <a href="https://wa.me/919446956617" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:janasevana.korome@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+919446956617" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    </div>
+    <hr class="footer-divider">
+    <p class="copy">&copy; 2026 E Sevana Kendram Korome. All rights reserved.</p>
+  </footer>
+
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="mobile-bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="#home"><i class="fas fa-home"></i>Home</a>
+      <a href="#services"><i class="fas fa-th-large"></i>Services</a>
+      <a href="upi://pay?pa=9446956617@okbizaxis&pn=E%20Sevana%20Kendram%20Korome&mc=5943&aid=uGICAgIDv2bW4XQ&tr=BCR2DN6T27ZZPFTG" class="pay-btn"><i class="fas fa-indian-rupee-sign"></i>Pay</a>
+      <a href="https://wa.me/919446956617"><i class="fab fa-whatsapp"></i>Chat</a>
+      <a href="tel:+919446956617"><i class="fas fa-phone"></i>Call</a>
+    </div>
+  </nav>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/919446956617" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#navLinks a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Scroll fade-up animation with stagger
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(function(el, i) {
+      el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      observer.observe(el);
+    });
+
+    // Highlight active bottom nav link on scroll
+    var sections = document.querySelectorAll('section[id]');
+    var bottomLinks = document.querySelectorAll('.mobile-bottom-nav a[href^="#"]');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY + 100;
+      sections.forEach(function(sec) {
+        var top = sec.offsetTop - 120;
+        var bottom = top + sec.offsetHeight;
+        var id = sec.getAttribute('id');
+        if (scrollY >= top && scrollY < bottom) {
+          bottomLinks.forEach(function(a) {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + id) a.classList.add('active');
+          });
+        }
+      });
+    });
+
+    // Navbar shrink on scroll
+    window.addEventListener('scroll', function() {
+      var nav = document.querySelector('.navbar');
+      if (window.scrollY > 60) {
+        nav.style.padding = '6px 0';
+      } else {
+        nav.style.padding = '12px 0';
+      }
+    });
+  </script>
 </body>
 </html>
