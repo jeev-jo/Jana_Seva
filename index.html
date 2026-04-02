@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E Sevana Kendram Korome | Digital Seva CSC Centre</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
@@ -118,31 +118,43 @@
       overflow: hidden;
       padding: 100px 24px 60px;
     }
-    .hero::before {
-      content: '';
+    .hero-orb {
       position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,111,0,0.15) 0%, transparent 70%);
-      top: -100px;
-      right: -100px;
       border-radius: 50%;
-      animation: float-orb 8s ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform;
+      z-index: 0;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(57,73,171,0.3) 0%, transparent 70%);
-      bottom: -50px;
-      left: -50px;
-      border-radius: 50%;
-      animation: float-orb 10s ease-in-out infinite reverse;
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,111,0,0.18) 0%, rgba(255,111,0,0.05) 40%, transparent 70%);
+      top: -80px; right: -80px;
+      animation: orb-drift-1 12s ease-in-out infinite;
     }
-    @keyframes float-orb {
+    .hero-orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(57,73,171,0.25) 0%, rgba(57,73,171,0.08) 40%, transparent 70%);
+      bottom: -40px; left: -40px;
+      animation: orb-drift-2 15s ease-in-out infinite;
+    }
+    .hero-orb-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,160,64,0.12) 0%, transparent 70%);
+      top: 40%; left: 50%;
+      animation: orb-drift-3 10s ease-in-out infinite;
+    }
+    @keyframes orb-drift-1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-30px, 20px) scale(1.05); }
+      66% { transform: translate(15px, -25px) scale(0.97); }
+    }
+    @keyframes orb-drift-2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -30px) scale(1.08); }
+    }
+    @keyframes orb-drift-3 {
       0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(30px, -30px); }
+      50% { transform: translate(-50px, 30px); }
     }
     .hero-inner {
       max-width: 1200px;
@@ -174,13 +186,35 @@
       0%, 100% { box-shadow: 0 0 8px rgba(255,160,64,0.2); }
       50% { box-shadow: 0 0 20px rgba(255,160,64,0.4); }
     }
-    .hero-text h1 {
+
+    /* Pretext-powered headline stage */
+    .hero-headline-stage {
+      position: relative;
+      margin-bottom: 12px;
+      min-height: 60px;
+    }
+    .hero-headline-stage .hero-line {
+      position: absolute;
+      white-space: pre;
+      color: #fff;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: -0.5px;
+    }
+    .hero-headline-stage .hero-line.accent-line {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* CSS fallback before pretext loads */
+    .hero-headline-fallback {
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 12px;
     }
-    .hero-text h1 .highlight {
+    .hero-headline-fallback .highlight {
       background: linear-gradient(135deg, var(--accent), var(--accent-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -203,6 +237,39 @@
       font-weight: 500;
     }
     .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Pretext-powered stat bubbles — shrinkwrapped */
+    .stat-bubble {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 10px 20px;
+      color: white;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .stat-bubble:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.14);
+    }
+    .stat-bubble .sb-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .stat-bubble .sb-icon.orange { background: linear-gradient(135deg, #ff6f00, #ffa040); }
+    .stat-bubble .sb-icon.blue { background: linear-gradient(135deg, #1565c0, #42a5f5); }
+    .stat-bubble .sb-icon.green { background: linear-gradient(135deg, #2e7d32, #66bb6a); }
+    .stat-bubble .sb-icon.purple { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+    .stat-bubble strong { font-size: 18px; font-weight: 700; }
+    .stat-bubble small { font-size: 11px; color: rgba(255,255,255,0.6); }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -236,13 +303,13 @@
       transform: translateY(-3px);
     }
 
-    /* Hero Right — Stats Cards */
+    /* Hero Right — Stat Bubbles Grid */
     .hero-right {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
-    .stat-row { display: flex; gap: 20px; }
+    .stat-row { display: flex; gap: 16px; flex-wrap: wrap; }
     .stat-card {
       background: rgba(255,255,255,0.08);
       backdrop-filter: blur(20px);
@@ -274,6 +341,76 @@
     .stat-card .stat-icon.purple { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
     .stat-card h3 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
     .stat-card p { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    /* ===== EDITORIAL ABOUT SECTION — Pretext multi-column flow ===== */
+    .editorial-section {
+      padding: 80px 24px 100px;
+      background: linear-gradient(135deg, #0a1332 0%, #101b44 50%, #1a237e 100%);
+      color: #e8e4dc;
+      position: relative;
+    }
+    .editorial-section .section-header .tag {
+      background: rgba(255,255,255,0.1);
+      color: var(--accent-light);
+    }
+    .editorial-section .section-header h2 {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+    .editorial-section .section-header p { color: rgba(255,255,255,0.6); }
+    .editorial-stage {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 400px;
+    }
+    .editorial-line {
+      position: absolute;
+      white-space: pre;
+      color: rgba(232, 228, 220, 0.88);
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
+      -webkit-user-select: text;
+      z-index: 1;
+    }
+    .editorial-drop-cap {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      color: var(--accent-light);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .editorial-col-divider {
+      position: absolute;
+      top: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.08) 80%, transparent);
+      z-index: 0;
+    }
+    /* CSS fallback for editorial (shown until pretext loads) */
+    .editorial-fallback {
+      max-width: 1200px;
+      margin: 0 auto;
+      column-count: 2;
+      column-gap: 48px;
+      column-rule: 1px solid rgba(255,255,255,0.08);
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(232, 228, 220, 0.85);
+      overflow: hidden;
+    }
+    .editorial-fallback p { margin-bottom: 16px; text-align: justify; }
+    .editorial-fallback .drop-cap-letter {
+      float: left;
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 0.8;
+      padding: 0 10px 0 0;
+      color: var(--accent-light);
+    }
 
     /* ===== MARQUEE ===== */
     .marquee-section {
@@ -690,6 +827,17 @@
       transform: translateY(0);
     }
 
+    /* Pretext line entrance animation */
+    .editorial-line, .hero-line {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .editorial-line.visible, .hero-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ===== MOBILE BOTTOM NAV ===== */
     .mobile-bottom-nav {
       display: none;
@@ -793,7 +941,7 @@
       .whatsapp-float { bottom: 90px; }
       .footer { padding-bottom: 80px; }
       .hero { padding: 90px 20px 40px; min-height: auto; }
-      .hero-text h1 { font-size: 32px; }
+      .hero-headline-fallback { font-size: 32px; }
       .hero-text .subtitle { font-size: 15px; }
       .btn { padding: 12px 24px; font-size: 14px; }
       .services { padding: 50px 16px; }
@@ -802,6 +950,8 @@
       .section-header p { font-size: 14px; }
       .why-us { padding: 50px 16px; }
       .contact { padding: 50px 16px; }
+      .editorial-section { padding: 50px 16px; }
+      .editorial-fallback { column-count: 1; }
     }
     @media (max-width: 600px) {
       .stat-row { flex-direction: column; }
@@ -854,7 +1004,7 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">Services</a></li>
-        <li><a href="#why-us">About</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://wa.me/919446956617" class="nav-cta"><i class="fab fa-whatsapp"></i> Chat Now</a></li>
       </ul>
@@ -866,13 +1016,24 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
+    <!-- Animated orbs (pretext editorial-engine style) -->
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
     <div class="hero-inner">
       <div class="hero-text">
         <div class="hero-badge">
           <i class="fas fa-shield-halved"></i>
           Government Authorized CSC Centre
         </div>
-        <h1>E Sevana Kendram<br><span class="highlight">Korome</span></h1>
+
+        <!-- Pretext-powered headline: lines positioned absolutely via JS -->
+        <div class="hero-headline-stage" id="heroHeadlineStage">
+          <!-- Fallback (hidden once pretext positions lines) -->
+          <h1 class="hero-headline-fallback" id="heroFallback">E Sevana Kendram<br><span class="highlight">Korome</span></h1>
+        </div>
+
         <p class="subtitle">Digital Seva CSC Centre &mdash; Your one-stop destination for all government e-services and online solutions.</p>
         <p class="csc-id"><i class="fas fa-id-badge"></i>&ensp;CSC ID: <span>276331260016</span></p>
         <div class="hero-actions">
@@ -1006,6 +1167,26 @@
         <h3>Print &amp; Scan</h3>
         <p>Printing, photocopying, scanning, lamination &amp; spiral binding</p>
       </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL ABOUT SECTION — Pretext multi-column text flow -->
+  <section class="editorial-section" id="about">
+    <div class="section-header fade-up">
+      <div class="tag">About Us</div>
+      <h2>Bridging the Digital Divide</h2>
+      <p>Bringing government services closer to every citizen, one application at a time.</p>
+    </div>
+
+    <!-- Pretext-powered multi-column text stage (lines positioned absolutely) -->
+    <div class="editorial-stage" id="editorialStage" style="display:none;"></div>
+
+    <!-- CSS fallback (shown until pretext loads) -->
+    <div class="editorial-fallback" id="editorialFallback">
+      <p><span class="drop-cap-letter">E</span> Sevana Kendram Korome began with a simple mission: no citizen should have to travel hours or stand in endless queues to access the government services they deserve. Located in the heart of Korome village, we serve as the officially authorized Common Service Centre for the entire region, trusted by thousands of families who depend on us for everything from Aadhaar enrollment to pension applications.</p>
+      <p>Our centre is staffed by trained Digital Seva operators who understand both the technology and the people. We process over fifty different government services with care, accuracy, and speed. Whether you need a fresh passport, a corrected PAN card, a caste certificate, or help enrolling in a PM welfare scheme, we handle the entire process from start to finish so you don't have to navigate confusing government portals alone.</p>
+      <p>In a region where digital literacy is still growing, we believe the government's digital services should reach every doorstep. That's why we've invested in the latest biometric equipment, high-speed connectivity, and a welcoming space where every visitor is treated with respect. From elderly citizens applying for pensions to young students downloading their mark sheets, we serve them all with the same dedication.</p>
+      <p>Since our inception, we have served over five thousand citizens, processing applications with a success rate that speaks for itself. Our transparent pricing, quick turnaround, and personal attention have earned us a reputation as the most trusted service centre in the area. When you visit Jana Seva, you're not just visiting a service centre — you're visiting a neighbor who cares about getting things done right.</p>
     </div>
   </section>
 
@@ -1198,6 +1379,299 @@
         nav.style.padding = '12px 0';
       }
     });
+  </script>
+
+  <!-- ===== PRETEXT TEXT POSITIONING ENGINE ===== -->
+  <script type="module">
+    // Import pretext for DOM-free text measurement & manual line positioning
+    // Technique: each text line is an absolutely positioned <span>,
+    // with left/top/textContent computed by pretext's arithmetic layout engine.
+    // No getBoundingClientRect, no offsetHeight, no layout reflow.
+    let prepareWithSegments, layoutWithLines, layoutNextLine, walkLineRanges;
+
+    try {
+      const pretext = await import('https://esm.sh/@chenglou/pretext@0.0.4');
+      prepareWithSegments = pretext.prepareWithSegments;
+      layoutWithLines = pretext.layoutWithLines;
+      layoutNextLine = pretext.layoutNextLine;
+      walkLineRanges = pretext.walkLineRanges;
+    } catch (e) {
+      console.log('Pretext CDN unavailable, keeping CSS fallback layout.');
+    }
+
+    if (prepareWithSegments) {
+      await document.fonts.ready;
+
+      // ========== HERO HEADLINE — Adaptive font sizing via binary search ==========
+      // Like the editorial-engine demo: find the largest font size
+      // where no word breaks across lines, then position each line absolutely.
+
+      const HERO_FONT_FAMILY = 'Poppins';
+      const TITLE_LINE_1 = 'E Sevana Kendram';
+      const TITLE_LINE_2 = 'Korome';
+
+      const heroStage = document.getElementById('heroHeadlineStage');
+      const heroFallback = document.getElementById('heroFallback');
+      const heroLinePool = [];
+
+      function syncHeroLines(count) {
+        while (heroLinePool.length < count) {
+          const span = document.createElement('span');
+          span.className = 'hero-line';
+          heroStage.appendChild(span);
+          heroLinePool.push(span);
+        }
+        for (let i = 0; i < heroLinePool.length; i++) {
+          heroLinePool[i].style.display = i < count ? '' : 'none';
+        }
+      }
+
+      function fitHeroHeadline(maxWidth) {
+        let lo = 28, hi = Math.min(72, Math.floor(maxWidth / 4));
+        let bestSize = lo, bestLines1 = [], bestLines2 = [];
+
+        while (lo <= hi) {
+          const size = Math.floor((lo + hi) / 2);
+          const font = '800 ' + size + 'px ' + HERO_FONT_FAMILY;
+          const lineHeight = Math.round(size * 1.15);
+          const prepared1 = prepareWithSegments(TITLE_LINE_1, font);
+          const prepared2 = prepareWithSegments(TITLE_LINE_2, font);
+
+          let count1 = 0, count2 = 0, breaksWord = false;
+          walkLineRanges(prepared1, maxWidth, function(line) {
+            count1++;
+            if (line.end.graphemeIndex !== 0) breaksWord = true;
+          });
+          walkLineRanges(prepared2, maxWidth, function(line) {
+            count2++;
+            if (line.end.graphemeIndex !== 0) breaksWord = true;
+          });
+
+          if (!breaksWord) {
+            bestSize = size;
+            bestLines1 = layoutWithLines(prepared1, maxWidth, lineHeight).lines;
+            bestLines2 = layoutWithLines(prepared2, maxWidth, lineHeight).lines;
+            lo = size + 1;
+          } else {
+            hi = size - 1;
+          }
+        }
+
+        return { fontSize: bestSize, lines1: bestLines1, lines2: bestLines2 };
+      }
+
+      function renderHeroHeadline() {
+        const maxWidth = heroStage.clientWidth || 500;
+        const { fontSize, lines1, lines2 } = fitHeroHeadline(maxWidth);
+        const lineHeight = Math.round(fontSize * 1.15);
+
+        const allLines = [
+          ...lines1.map(function(l, i) { return { text: l.text, y: i * lineHeight, accent: false }; }),
+          ...lines2.map(function(l, i) { return { text: l.text, y: (lines1.length + i) * lineHeight, accent: true }; })
+        ];
+
+        syncHeroLines(allLines.length);
+        heroFallback.style.display = 'none';
+
+        for (let i = 0; i < allLines.length; i++) {
+          const line = allLines[i];
+          const span = heroLinePool[i];
+          span.textContent = line.text;
+          span.style.left = '0px';
+          span.style.top = line.y + 'px';
+          span.style.font = '800 ' + fontSize + 'px ' + HERO_FONT_FAMILY;
+          span.style.lineHeight = lineHeight + 'px';
+          span.className = line.accent ? 'hero-line accent-line' : 'hero-line';
+
+          // Staggered entrance animation
+          setTimeout(function() { span.classList.add('visible'); }, 80 * i);
+        }
+
+        heroStage.style.height = ((lines1.length + lines2.length) * lineHeight) + 'px';
+      }
+
+      renderHeroHeadline();
+      window.addEventListener('resize', renderHeroHeadline);
+
+
+      // ========== EDITORIAL SECTION — Multi-column text flow ==========
+      // Like the editorial-engine demo: text flows across columns using
+      // layoutNextLine() with cursor handoff. Each line is an absolute <span>.
+
+      const EDIT_FONT = '15px Poppins';
+      const EDIT_LINE_HEIGHT = 28;
+      const EDIT_COL_GAP = 48;
+      const DROP_CAP_LINES = 3;
+      const DROP_CAP_FONT_FAMILY = 'Playfair Display';
+
+      const ABOUT_TEXT = 'E Sevana Kendram Korome began with a simple mission: no citizen should have to travel hours or stand in endless queues to access the government services they deserve. Located in the heart of Korome village, we serve as the officially authorized Common Service Centre for the entire region, trusted by thousands of families who depend on us for everything from Aadhaar enrollment to pension applications.\n\nOur centre is staffed by trained Digital Seva operators who understand both the technology and the people. We process over fifty different government services with care, accuracy, and speed. Whether you need a fresh passport, a corrected PAN card, a caste certificate, or help enrolling in a PM welfare scheme, we handle the entire process from start to finish so you don\'t have to navigate confusing government portals alone.\n\nIn a region where digital literacy is still growing, we believe the government\'s digital services should reach every doorstep. That\'s why we\'ve invested in the latest biometric equipment, high-speed connectivity, and a welcoming space where every visitor is treated with respect. From elderly citizens applying for pensions to young students downloading their mark sheets, we serve them all with the same dedication.\n\nSince our inception, we have served over five thousand citizens, processing applications with a success rate that speaks for itself. Our transparent pricing, quick turnaround, and personal attention have earned us a reputation as the most trusted service centre in the area. When you visit Jana Seva, you\'re not just visiting a service centre — you\'re visiting a neighbor who cares about getting things done right.';
+
+      const editorialStage = document.getElementById('editorialStage');
+      const editorialFallback = document.getElementById('editorialFallback');
+      const editLinePool = [];
+      let editDividerPool = [];
+      let dropCapEl = null;
+
+      function syncEditLines(count) {
+        while (editLinePool.length < count) {
+          const span = document.createElement('span');
+          span.className = 'editorial-line';
+          editorialStage.appendChild(span);
+          editLinePool.push(span);
+        }
+        for (let i = 0; i < editLinePool.length; i++) {
+          editLinePool[i].style.display = i < count ? '' : 'none';
+        }
+      }
+
+      function syncDividers(count) {
+        while (editDividerPool.length < count) {
+          const div = document.createElement('div');
+          div.className = 'editorial-col-divider';
+          editorialStage.appendChild(div);
+          editDividerPool.push(div);
+        }
+        for (let i = 0; i < editDividerPool.length; i++) {
+          editDividerPool[i].style.display = i < count ? '' : 'none';
+        }
+      }
+
+      function layoutEditorial() {
+        const stageWidth = editorialStage.clientWidth;
+        if (stageWidth < 30) return;
+
+        const isNarrow = stageWidth < 500;
+        const colCount = stageWidth > 900 ? 3 : stageWidth > 550 ? 2 : 1;
+        const colWidth = (stageWidth - EDIT_COL_GAP * (colCount - 1)) / colCount;
+
+        const prepared = prepareWithSegments(ABOUT_TEXT, EDIT_FONT, { whiteSpace: 'pre-wrap' });
+
+        // Measure the drop cap
+        const dropCapSize = EDIT_LINE_HEIGHT * DROP_CAP_LINES - 4;
+        const dropCapFont = '900 ' + dropCapSize + 'px ' + DROP_CAP_FONT_FAMILY;
+        const preparedDropCap = prepareWithSegments(ABOUT_TEXT[0], dropCapFont);
+        let dropCapWidth = 0;
+        walkLineRanges(preparedDropCap, 9999, function(line) {
+          dropCapWidth = line.width;
+        });
+        const dropCapTotalW = Math.ceil(dropCapWidth) + 14;
+
+        // Create drop cap element
+        if (!dropCapEl) {
+          dropCapEl = document.createElement('div');
+          dropCapEl.className = 'editorial-drop-cap';
+          editorialStage.appendChild(dropCapEl);
+        }
+        dropCapEl.textContent = ABOUT_TEXT[0];
+        dropCapEl.style.font = dropCapFont;
+        dropCapEl.style.lineHeight = dropCapSize + 'px';
+        dropCapEl.style.left = '0px';
+        dropCapEl.style.top = '0px';
+        dropCapEl.style.display = colCount > 1 ? '' : 'none';
+
+        // Layout text across columns with cursor handoff
+        const allLines = [];
+        let cursor = { segmentIndex: 0, graphemeIndex: 0 };
+        let maxY = 0;
+
+        for (let col = 0; col < colCount; col++) {
+          const colX = col * (colWidth + EDIT_COL_GAP);
+          let y = 0;
+          let maxLinesInCol = 800;
+
+          while (maxLinesInCol-- > 0) {
+            // First column first few lines: narrow width for drop cap
+            let lineWidth = colWidth;
+            if (col === 0 && y < DROP_CAP_LINES * EDIT_LINE_HEIGHT && colCount > 1) {
+              lineWidth = colWidth - dropCapTotalW;
+            }
+
+            const line = layoutNextLine(prepared, cursor, lineWidth);
+            if (line === null) break;
+
+            const xOffset = (col === 0 && y < DROP_CAP_LINES * EDIT_LINE_HEIGHT && colCount > 1)
+              ? colX + dropCapTotalW
+              : colX;
+
+            allLines.push({
+              text: line.text,
+              x: Math.round(xOffset),
+              y: Math.round(y),
+              col: col
+            });
+
+            cursor = line.end;
+            y += EDIT_LINE_HEIGHT;
+
+            // Limit column height for balanced columns
+            if (colCount > 1 && y > 500) break;
+          }
+
+          if (y > maxY) maxY = y;
+        }
+
+        // Position line elements
+        syncEditLines(allLines.length);
+        for (let i = 0; i < allLines.length; i++) {
+          const line = allLines[i];
+          const span = editLinePool[i];
+          span.textContent = line.text;
+          span.style.left = line.x + 'px';
+          span.style.top = line.y + 'px';
+          span.style.font = EDIT_FONT;
+          span.style.lineHeight = EDIT_LINE_HEIGHT + 'px';
+
+          // Staggered entrance
+          const delay = Math.min(i * 15, 600);
+          span.style.transitionDelay = delay + 'ms';
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              span.classList.add('visible');
+            });
+          });
+        }
+
+        // Column dividers (like newspaper column rules)
+        syncDividers(colCount - 1);
+        for (let i = 0; i < colCount - 1; i++) {
+          const div = editDividerPool[i];
+          const xPos = Math.round((i + 1) * (colWidth + EDIT_COL_GAP) - EDIT_COL_GAP / 2);
+          div.style.left = xPos + 'px';
+          div.style.height = maxY + 'px';
+        }
+
+        editorialStage.style.height = maxY + 'px';
+      }
+
+      // Show pretext stage, hide CSS fallback
+      editorialStage.style.display = '';
+      editorialFallback.style.display = 'none';
+
+      // Layout immediately if already visible, otherwise wait
+      layoutEditorial();
+
+      // Also observe for re-entry (e.g. after scroll)
+      const editorialObserver = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          layoutEditorial();
+        }
+      }, { threshold: 0.05 });
+      editorialObserver.observe(editorialStage);
+
+      // Re-layout on resize
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          // Reset line animations for re-layout
+          editLinePool.forEach(function(span) {
+            span.classList.remove('visible');
+            span.style.transitionDelay = '0ms';
+          });
+          layoutEditorial();
+        }, 150);
+      });
+    }
   </script>
 </body>
 </html>
